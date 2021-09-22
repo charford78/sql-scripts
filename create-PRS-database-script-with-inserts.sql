@@ -97,25 +97,19 @@ INSERT Requests
 	(Description, Justification, Total, UserId)
 	values
 	('2 new laptops and 1 ream of paper', 'I need it', 
-		(Select sum(p.Price * rl.Quantity)
-			from Products p
-			join Requestlines rl
-				on p.Id = rl.ProductId),
+		2024.97,
 		(Select Id from Users
 			where Username = 'bossman99'));
 
 INSERT Requestlines
 	(RequestId, ProductId, Quantity)
 	values
-	(Select Id from Requests
+	((Select Id from Requests
 		where Description like '2 new laptops%'),
 	(Select Id from Products
-		where PartNbr = 'dell35'), 2);
-	(Select Id from Requests
+		where PartNbr = 'dell35'), 2),
+	((Select Id from Requests
 		where Description like '2 new laptops%'),
 	(Select Id from Products
 		where PartNbr = 'prtpap100'), 1);
-
-
-
 
