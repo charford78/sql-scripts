@@ -31,7 +31,7 @@ create table Vendors (
 create table Products (
 	Id int primary key identity (1,1),
 	PartNbr varchar(30) not null unique,
-	Name varchar(30) not null,
+	Name varchar(40) not null,
 	Price decimal(9,2) not null default 0,
 	Unit varchar(30) not null default 'Each',
 	PhotoPath varchar(255) null,
@@ -72,13 +72,27 @@ INSERT Vendors
 	('CAVU', 'Cavu Coffee', '789 Buddy Drive', 'West Chester', 'OH', '45069');
 
 INSERT Products
-	(PartNbr, Name, Price, VendorId)
+	(PartNbr, Name, Price, Unit, VendorId)
 	values
-	('spk42', 'Plastic Spork', 0.29, (SELECT Id from Vendors
-										where Code = 'KRG')),
-	('dell35', 'Dell 3500 Laptop', 999.99, (SELECT Id from Vendors
-												where Code = 'AMZ')),
-	('coldrk6', 'Columbian Dark Roast', 12.99, (SELECT Id from Vendors
-													where Code = 'CAVU'));
+	('spk42', 'Plastic Spork', 0.29, 'Each', 
+		(SELECT Id from Vendors
+			where Code = 'KRG')),
+	('dell35', 'Dell 3500 Laptop', 999.99, 'Each', 
+		(SELECT Id from Vendors
+			where Code = 'AMZ')),
+	('coldrk6', 'Columbian Dark Roast Ground', 12.99, 'Bag', 
+		(SELECT Id from Vendors
+			where Code = 'CAVU')),
+	('1gmilk2p', 'Gallon 2% Milk', 3.29, 'Each', 
+		(SELECT Id from Vendors
+			where Code = 'KRG')),
+	('medrstbn', 'Medium Roast Coffee Beans', 10.99, 'Bag', 
+		(SELECT Id from Vendors
+			where Code = 'CAVU')),
+	('prtpap100', '8x10 Wht Prntr Paper, 100 shts', 24.99, 'Pack', 
+		(SELECT Id from Vendors
+			where Code = 'AMZ'));
+
+
 
 
