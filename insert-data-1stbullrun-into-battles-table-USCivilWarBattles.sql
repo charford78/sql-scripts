@@ -6,5 +6,5 @@ insert Battles (BattleCode, BattleName, Date, Location, Theatre, Victor)
 	select * from Battles
 
 	Update Battles
-		set Date = 1861-21-07
+		set Date = '1861-07-21'
 		where BattleCode = '1BRUN';
