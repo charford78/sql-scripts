@@ -27,3 +27,14 @@ select *
 	join Commanders c
 		on b.Id = c.BattleId;
 
+insert Commanders (Commander, Army, BattleId)
+	values
+		('Sterling Price', 'MSG', (Select Id from Battles
+								where BattleCode = 'WILCRK')),
+		('Benjamin McCulloch', 'CSA', (select Id from Battles
+								where BattleCode = 'WILCRK')),
+		('Nathaniel Lyon', 'USA', (select Id from Battles
+								where BattleCode = 'WILCRK')),
+		('Samuel D. Sturgis', 'USA', (select Id from Battles
+								where BattleCode = 'WILCRK'));
+
