@@ -4,13 +4,6 @@ insert Battles (BattleCode, BattleName, Location, Theatre, Victor)
 values ('WILCRK', 'Battle of Wilson''s Creek', 'Wilson''s Creek, MO',
 	'Western', 'CSA');
 
-create table Commanders (
-	Id int primary key identity(1,1),
-	Name varchar(30) not null,
-	Army char(3) not null,
-	BattleId int not null foreign key references Battles(Id)
-	);
-
 select * from Commanders;
 
 insert Commanders (Name, Army, BattleId)
